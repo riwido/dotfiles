@@ -138,6 +138,7 @@ bindsym $mod+8 workspace number $ws8
 bindsym $mod+9 workspace number $ws9
 bindsym $mod+0 workspace number $ws10
 
+# use xprop in a neighboring terminal to look for profile name
 assign [class="firefox"] $ws10
 
 # move focused container to workspace
