@@ -20,3 +20,5 @@ augroup END
 
 " todo: disable autocomplete for non code files
 
+" from reddit.  jump between buffers
+nnoremap <leader>b :ls<CR>:b<Space>
