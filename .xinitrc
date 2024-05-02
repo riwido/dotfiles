@@ -48,6 +48,8 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
+# prevent sleeping
+# https://wiki.archlinux.org/title/Display_Power_Management_Signaling
 xset s off
 xset -dpms
 
