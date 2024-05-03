@@ -18,10 +18,24 @@ call plug#end()
 augroup Config
 autocmd!
 " autoreload vimrc
-autocmd BufWritePost *.vimrc source ~/.vimrc 
+autocmd BufWritePre * call StripWhitespace()
+autocmd BufWritePost *.vimrc source ~/.vimrc
 augroup END
 
+function! StripWhitespace()
+    "if &ft == 'markdown'
+    "    return
+    "endif
+    let pos = getcurpos()
+    %s#\s\+$##e " EOL
+    %s#\($\n\s*\)\+\%$##e " EOF
+    " %s#\([^\n]\)\%$#\1\n#e " add missing eof newline
+    " (this doesn't work and maybe isn't needed?)
+    call setpos('.', pos)
+endfunction
+
 " These are default with gitgutter
+" inlayHints disabled in coc-settings.json to make these work
 " nmap <leader>hp  <Plug>(GitGutterPreviewHunk)
 " nmap <leader>hp  <Plug>(GitGutterStageHunk)
 " nmap <leader>hu  <Plug>(GitGutterUndoHunk)
