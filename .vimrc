@@ -1,3 +1,7 @@
+
+colorscheme industry
+
+
 " install https://github.com/junegunn/vim-plug if it isn't there
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent execute '!curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
@@ -7,16 +11,24 @@ endif
 " plugin list
 call plug#begin()
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+Plug 'airblade/vim-gitgutter'
 call plug#end()
-
-" use enter to use autocomplete option
-" inoremap <expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<CR>"
 
 " auto commands
 augroup Config
 autocmd!
-autocmd BufWritePost *vimrc source ~/.vimrc " autoreload vimrc
+" autoreload vimrc
+autocmd BufWritePost *.vimrc source ~/.vimrc 
 augroup END
+
+" These are default with gitgutter
+" nmap <leader>hp  <Plug>(GitGutterPreviewHunk)
+" nmap <leader>hp  <Plug>(GitGutterStageHunk)
+" nmap <leader>hu  <Plug>(GitGutterUndoHunk)
+
+" nmap [c <Plug>(GitGutterPrevHunk)
+" nmap ]c <Plug>(GitGutterNextHunk)
+
 
 " todo: disable autocomplete for non code files
 
@@ -36,11 +48,11 @@ set encoding=utf-8
 "
 "" Having longer updatetime (default is 4000 ms = 4s) leads to noticeable
 "" delays and poor user experience
-"set updatetime=300
+set updatetime=300
 "
 "" Always show the signcolumn, otherwise it would shift the text each time
 "" diagnostics appear/become resolved
-"set signcolumn=yes
+set signcolumn=yes
 "
 "" Use tab for trigger completion with characters ahead and navigate
 "" NOTE: There's always complete item selected by default, you may want to enable
@@ -72,8 +84,8 @@ inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 "
 "" Use `[g` and `]g` to navigate diagnostics
 "" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list
-"nmap <silent> [g <Plug>(coc-diagnostic-prev)
-"nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
 "
 "" GoTo code navigation
 "nmap <silent> gd <Plug>(coc-definition)
