@@ -7,6 +7,8 @@
 
 #set -o vi
 
+source /usr/share/bash-completion/completions/git
+
 alias clip='xclip -selection clipboard'
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
