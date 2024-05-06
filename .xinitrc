@@ -53,4 +53,6 @@ fi
 xset s off
 xset -dpms
 
+numlockx
+
 exec i3
