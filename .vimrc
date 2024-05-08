@@ -21,15 +21,15 @@ Plug 'airblade/vim-gitgutter'
 call plug#end()
 
 let g:coc_global_extensions = [
-    'coc-css',
-    'coc-eslint',
-    'coc-json',
-    'coc-prettier',
-    'coc-pyright',
-    'coc-rust-analyzer',
-    'coc-stylelint',
-    'coc-vimlsp',
-]
+   \'coc-css',
+   \'coc-eslint',
+   \'coc-json',
+   \'coc-prettier',
+   \'coc-pyright',
+   \'coc-rust-analyzer',
+   \'coc-stylelint',
+   \'coc-vimlsp'
+   \]
 
 " auto commands
 augroup Config
