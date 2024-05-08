@@ -1,4 +1,8 @@
 {
+    "prettier.tabWidth": 4,
+    "prettier.singleQuote": true,
+    "prettier.printWidth": 80,
+    "prettier.trailingComma": "all",
 	"python.formatting.provider": "black",
 	"pyright.inlayHints.variableTypes": false,
 	"pyright.inlayHints.parameterTypes": false,

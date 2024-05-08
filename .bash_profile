@@ -25,3 +25,4 @@ shopt -s nocaseglob  # case insensitive match for path expansion
 # Set up fzf key bindings and fuzzy completion
 command -v fzf >/dev/null && eval "$(fzf --bash)"
 
+export PATH="$PATH:/home/rwd/.local/bin"

@@ -1,6 +1,12 @@
 
 colorscheme industry
 
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set expandtab
+
+set mouse=a
 
 " install https://github.com/junegunn/vim-plug if it isn't there
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -13,6 +19,17 @@ call plug#begin()
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'airblade/vim-gitgutter'
 call plug#end()
+
+let g:coc_global_extensions = [
+    'coc-css',
+    'coc-eslint',
+    'coc-json',
+    'coc-prettier',
+    'coc-pyright',
+    'coc-rust-analyzer',
+    'coc-stylelint',
+    'coc-vimlsp',
+]
 
 " auto commands
 augroup Config
@@ -84,10 +101,10 @@ inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 "inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
 "                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 "
-"function! CheckBackspace() abort
-"  let col = col('.') - 1
-"  return !col || getline('.')[col - 1]  =~# '\s'
-"endfunction
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
 "
 "" Use <c-space> to trigger completion
 "if has('nvim')

@@ -49,6 +49,8 @@ floating_maximum_size 1000 x 1000
 # or left-clicking anywhere into the window while holding the floating modifier.
 tiling_drag modifier titlebar
 
+
+bindsym $mod+Shift+s exec xfce4-screenshooter
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
 
@@ -139,6 +141,7 @@ bindsym $mod+9 workspace number $ws9
 bindsym $mod+0 workspace number $ws10
 
 # use xprop in a neighboring terminal to look for profile name
+assign [class="Mesen"] $ws3
 assign [class="KeePassXC"] $ws9
 assign [class="firefox"] $ws10
 
