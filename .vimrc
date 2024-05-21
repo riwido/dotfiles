@@ -1,6 +1,8 @@
 
 colorscheme industry
 
+set encoding=utf-8
+
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
@@ -39,6 +41,8 @@ autocmd BufWritePre * call StripWhitespace()
 autocmd BufWritePost *.vimrc source ~/.vimrc
 augroup END
 
+:command FF CocCommand prettier.formatFile
+
 function! StripWhitespace()
     "if &ft == 'markdown'
     "    return
@@ -54,7 +58,7 @@ endfunction
 " These are default with gitgutter
 " inlayHints disabled in coc-settings.json to make these work
 " nmap <leader>hp  <Plug>(GitGutterPreviewHunk)
-" nmap <leader>hp  <Plug>(GitGutterStageHunk)
+" nmap <leader>hs  <Plug>(GitGutterStageHunk)
 " nmap <leader>hu  <Plug>(GitGutterUndoHunk)
 
 " nmap [c <Plug>(GitGutterPrevHunk)
@@ -64,15 +68,12 @@ endfunction
 " todo: disable autocomplete for non code files
 
 " from reddit.  jump between buffers
-nnoremap <leader>b :ls<CR>:b<Space>
+" nnoremap <leader>b :ls<CR>:b<Space>
 
 " the following is from github.com/neoclide/coc.nvim
 
 " https://raw.githubusercontent.com/neoclide/coc.nvim/master/doc/coc-example-config.vim
 
-" May need for Vim (not Neovim) since coc.nvim calculates byte offset by count
-" utf-8 byte sequence
-set encoding=utf-8
 " Some servers have issues with backup files, see #649
 "set nobackup
 "set nowritebackup
@@ -98,9 +99,9 @@ inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
 "" Make <CR> to accept selected completion item or notify coc.nvim to format
 "" <C-g>u breaks current undo, please make your own choice
-"inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-"                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-"
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
 function! CheckBackspace() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
