@@ -8,6 +8,7 @@
 #set -o vi
 
 source /usr/share/bash-completion/completions/git
+source /usr/share/bash-completion/completions/docker
 
 alias clip='xclip -selection clipboard'
 alias ls='ls --color=auto'
