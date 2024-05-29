@@ -30,6 +30,7 @@ let g:coc_global_extensions = [
    \'coc-pyright',
    \'coc-rust-analyzer',
    \'coc-stylelint',
+   \'coc-tsserver',
    \'coc-vimlsp'
    \]
 
