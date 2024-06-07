@@ -141,9 +141,9 @@ bindsym $mod+9 workspace number $ws9
 bindsym $mod+0 workspace number $ws10
 
 # use xprop in a neighboring terminal to look for profile name
-assign [class="Mesen"] $ws3
+# assign [class="Mesen"] $ws3
 assign [class="KeePassXC"] $ws9
-assign [class="firefox"] $ws10
+# assign [class="firefox"] $ws10
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
