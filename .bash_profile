@@ -26,3 +26,10 @@ shopt -s nocaseglob  # case insensitive match for path expansion
 command -v fzf >/dev/null && eval "$(fzf --bash)"
 
 export PATH="$PATH:/home/rwd/.local/bin"
+
+# Add .NET Core SDK tools
+export PATH="$PATH:/home/rwd/.dotnet/tools"
+
+# Install Ruby Gems to ~/gems
+export GEM_HOME="$HOME/gems"
+export PATH="$HOME/gems/bin:$PATH"
