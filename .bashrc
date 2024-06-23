@@ -4,14 +4,19 @@
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
-
+printf "running .bashrc\n"
 #set -o vi
 
 source /usr/share/bash-completion/completions/git
-source /usr/share/bash-completion/completions/docker
 
-source <(pdm completion bash)
+# docker may not be installed
+command -v docker && source /usr/share/bash-completion/completions/docker
 
+if command -v pdm; then
+    source <(pdm completion bash)
+else
+    printf "pdm not installed yet\n"
+fi
 
 
 gv () {
@@ -41,9 +46,14 @@ mesen () {
 shopt -s nocaseglob  # case insensitive match for path expansion
 
 # Set up fzf key bindings and fuzzy completion
-command -v fzf >/dev/null && eval "$(fzf --bash)"
+if command -v fzf; then
+    eval "$(fzf --bash)"
+else
+    printf "fzf not installed yet\n"
+fi
 
 alias clip='xclip -selection clipboard'
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
+
 PS1='[\u@\h \W]\$ '
