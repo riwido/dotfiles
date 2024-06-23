@@ -29,3 +29,6 @@ if [ $? -ne 0 ]; then
 fi
 printf "Updating dotfiles\n"
 git pull public main
+
+# go back!
+cd -

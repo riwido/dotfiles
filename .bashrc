@@ -7,12 +7,18 @@
 printf "running .bashrc\n"
 #set -o vi
 
+is_cmd () {
+    command -v $1 > /dev/null
+    }
+
+
+
 source /usr/share/bash-completion/completions/git
 
 # docker may not be installed
-command -v docker && source /usr/share/bash-completion/completions/docker
+is_cmd docker && source /usr/share/bash-completion/completions/docker
 
-if command -v pdm; then
+if is_cmd pdm; then
     source <(pdm completion bash)
 else
     printf "pdm not installed yet\n"
@@ -46,7 +52,7 @@ mesen () {
 shopt -s nocaseglob  # case insensitive match for path expansion
 
 # Set up fzf key bindings and fuzzy completion
-if command -v fzf; then
+if is_cmd fzf; then
     eval "$(fzf --bash)"
 else
     printf "fzf not installed yet\n"
