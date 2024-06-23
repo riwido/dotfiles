@@ -8,7 +8,8 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab
 
-set mouse=a
+set mouse=a " mouse & xterm interaction
+set showcmd " show command as its typed
 
 " install https://github.com/junegunn/vim-plug if it isn't there
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -35,6 +36,10 @@ let g:coc_global_extensions = [
    \]
 
 " auto commands
+"
+:autocmd InsertEnter * set cursorline
+:autocmd InsertLeave * set nocursorline
+
 augroup Config
 autocmd!
 " autoreload vimrc
