@@ -1,0 +1,209 @@
+// vim:ts=4:sw=4:et
+{
+    // splitv split container with 2 children
+    "border": "pixel",
+    "floating": "auto_off",
+    "layout": "splitv",
+    "marks": [],
+    "percent": 0.5,
+    "type": "con",
+    "nodes": [
+        {
+            // splith split container with 2 children
+            "border": "pixel",
+            "floating": "auto_off",
+            "layout": "splith",
+            "marks": [],
+            "percent": 0.5,
+            "type": "con",
+            "nodes": [
+                {
+                    "border": "pixel",
+                    "current_border_width": 3,
+                    "floating": "auto_off",
+                    "marks": [],
+                    "name": "Mesen",
+                    "percent": 0.5,
+                    "swallows": [
+                       {
+                       "class": "^Mesen$",
+                       "instance": "^Mesen$",
+                       "title": "^Mesen.*"
+                       }
+                    ],
+                    "type": "con"
+                },
+                {
+                    "border": "pixel",
+                    "current_border_width": 3,
+                    "floating": "auto_off",
+                    "marks": [],
+                    "name": "Memory Viewer",
+                    "percent": 0.5,
+                    "swallows": [
+                       {
+                       "class": "^Mesen$",
+                       "instance": "^Mesen$",
+                       "title": "^Memory\\ Viewer$"
+                       }
+                    ],
+                    "type": "con"
+                }
+            ]
+        },
+        {
+            // tabbed split container with 2 children
+            "border": "pixel",
+            "current_border_width": 3,
+            "floating": "auto_off",
+            "layout": "tabbed",
+            "marks": [],
+            "name": "DebuggerTilemap",
+            "percent": 0.5,
+            "type": "con",
+            "nodes": [
+                {
+                    "border": "pixel",
+                    "current_border_width": 6,
+                    "floating": "auto_off",
+                    "geometry": {
+                       "height": 1055,
+                       "width": 1895,
+                       "x": 20,
+                       "y": 1085
+                    },
+                    "marks": [],
+                    "name": "Debugger",
+                    "percent": 0.5,
+                    "swallows": [
+                       {
+                       "class": "^Mesen$",
+                       "instance": "^Mesen$",
+                       "title": "^Debugger$"
+                       }
+                    ],
+                    "type": "con"
+                },
+                {
+                    "border": "pixel",
+                    "current_border_width": 6,
+                    "floating": "auto_off",
+                    "marks": [],
+                    "name": "Tilemap Viewer",
+                    "percent": 0.5,
+                    "swallows": [
+                       {
+                       "class": "^Mesen$",
+                       "instance": "^Mesen$",
+                       "title": "^Tilemap\\ Viewer$"
+                       }
+                    ],
+                    "type": "con"
+                }
+            ]
+        }
+    ]
+}
+
+{
+    // splitv split container with 2 children
+    "border": "pixel",
+    "floating": "auto_off",
+    "layout": "splitv",
+    "marks": [],
+    "percent": 0.5,
+    "type": "con",
+    "nodes": [
+        {
+            // tabbed split container with 3 children
+            "border": "pixel",
+            "floating": "auto_off",
+            "layout": "tabbed",
+            "marks": [],
+            "percent": 0.7,
+            "type": "con",
+            "nodes": [
+                {
+                    "border": "pixel",
+                    "current_border_width": 3,
+                    "floating": "auto_off",
+                    "geometry": {
+                       "height": 844,
+                       "width": 1604,
+                       "x": 0,
+                       "y": 0
+                    },
+                    "marks": [],
+                    "name": "rwd@box2:~",
+                    "percent": 0.333333333333333,
+                    "swallows": [
+                       {
+                       "class": "^UXTerm$"
+                       }
+                    ],
+                    "type": "con"
+                },
+                {
+                    "border": "pixel",
+                    "current_border_width": 3,
+                    "floating": "auto_off",
+                    "geometry": {
+                       "height": 844,
+                       "width": 1604,
+                       "x": 0,
+                       "y": 0
+                    },
+                    "marks": [],
+                    "name": "rwd@box2:~",
+                    "percent": 0.333333333333333,
+                    "swallows": [
+                       {
+                       "class": "^UXTerm$"
+                       }
+                    ],
+                    "type": "con"
+                },
+                {
+                    "border": "pixel",
+                    "current_border_width": 3,
+                    "floating": "auto_off",
+                    "geometry": {
+                       "height": 1972,
+                       "width": 2000,
+                       "x": 0,
+                       "y": 0
+                    },
+                    "marks": [],
+                    "name": "Mozilla Firefox",
+                    "percent": 0.333333333333333,
+                    "swallows": [
+                       {
+                       "class": "^firefox$"
+                       }
+                    ],
+                    "type": "con"
+                }
+            ]
+        },
+        {
+            "border": "pixel",
+            "current_border_width": 3,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 844,
+               "width": 1604,
+               "x": 0,
+               "y": 0
+            },
+            "marks": [],
+            "name": "rwd@box2:~",
+            "percent": 0.3,
+            "swallows": [
+               {
+               "class": "^UXTerm$"
+               }
+            ],
+            "type": "con"
+        }
+    ]
+}

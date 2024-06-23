@@ -1,4 +1,4 @@
-Xft.dpi: 120
+Xft.dpi: 180
 xterm*faceName: monospace:pixelsize=30
 xterm*Background: black
 xterm*Foreground: white
