@@ -3,7 +3,7 @@
 mkdir -p ~/.config/i3
 mkdir -p ~/.vim
 
-ln -s $PWD/i3 ~/.config/i3
+ln -s $PWD/i3 ~/.config/
 ln -sf $PWD/.bash_logout ~/.bash_logout
 ln -sf $PWD/.bashrc ~/.bashrc
 ln -sf $PWD/.bash_profile ~/.bash_profile
