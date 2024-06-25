@@ -61,5 +61,12 @@ fi
 alias clip='xclip -selection clipboard'
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
+alias va='source . .venv/bin/activate'
+alias vc='virtualenv .venv'
+alias gs='git status'
+alias gd='git diff'
+alias ga='git add'
+alias gc='git commit'
+
 
 PS1='[\u@\h \W]\$ '
