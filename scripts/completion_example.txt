@@ -1,0 +1,20 @@
+declare -A hosts
+hosts[crabpuff]="mmm"
+hosts[eggroll]="yum"
+hosts[potato]="okay"
+
+sssh () {
+    echo ${hosts[$1]}
+    sshpass -p cisco ssh switch
+}
+
+function __complete_sssh() {
+    local cur words
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    words=$(echo ${!hosts[@]})
+    COMPREPLY=( $(compgen -W "${words}" -- ${cur}) )
+    return 0
+}
+
+complete -o nospace -F __complete_sssh sssh
