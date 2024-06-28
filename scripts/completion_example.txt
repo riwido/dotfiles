@@ -12,8 +12,7 @@ function __complete_sssh() {
     local cur words
     COMPREPLY=()
     cur="${COMP_WORDS[COMP_CWORD]}"
-    words=$(echo ${!hosts[@]})
-    COMPREPLY=( $(compgen -W "${words}" -- ${cur}) )
+    COMPREPLY=( $(compgen -W "${!hosts[*]})" -- ${cur}) )
     return 0
 }
 
