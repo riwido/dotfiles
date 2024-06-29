@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 
-mkdir -p ~/.config/i3
+mkdir -p ~/.config
 mkdir -p ~/.vim
 
 ln -s $PWD/i3 ~/.config/
+ln -s $PWD/i3status ~/.config/
 ln -sf $PWD/.bash_logout ~/.bash_logout
 ln -sf $PWD/.bashrc ~/.bashrc
 ln -sf $PWD/.bash_profile ~/.bash_profile
