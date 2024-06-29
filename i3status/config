@@ -4,21 +4,15 @@ general {
 }
 
 order += "disk /"
-order += "run_watch VPNC"
 order += "path_exists VPN"
-order += "ethernet enp8s0"
+order += "ethernet ${bar_intf}"
 order += "memory"
 order += "load"
 order += "tztime local"
 
-ethernet enp8s0 {
+ethernet ${bar_intf} {
         format_up = "%ip"
         format_down = "network down"
-}
-
-run_watch VPNC {
-        # file containing the PID of a vpnc process
-        pidfile = "/var/run/vpnc/pid"
 }
 
 path_exists VPN {

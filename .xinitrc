@@ -48,7 +48,7 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
-[[ $(</etc/hostname) == "left" ]] && xrdb -merge .Xresources .Xleft
+[[ -f ~/.Xlocal ]] && xrdb -merge .Xresources .Xlocal
 
 # prevent sleeping
 # https://wiki.archlinux.org/title/Display_Power_Management_Signaling

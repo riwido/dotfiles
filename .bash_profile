@@ -6,6 +6,14 @@
 
 printf "running .bash_profile\n"
 
+
+# Set defaults here.  Tried to use ${FOO:-BAR} with envsubst but it didn't work
+# envsubst < <(echo '${foo:-bar}')
+export bar_intf=_first_
+
+# Override any defaults with a .localrc
+[[ -f ~/.localrc ]] && . ~/.localrc
+
 export EDITOR=vim
 export VISUAL=vim
 
@@ -30,5 +38,6 @@ fi
 printf "Updating dotfiles\n"
 git pull public main
 
+
 # go back!
-cd -
+cd ~

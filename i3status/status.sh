@@ -1,5 +1,5 @@
 #!/bin/bash
-i3status | while :
+i3status -c <(envsubst < $HOME/.config/i3status/config) | while :
 do
     read line
     id=$(xprop -root | awk '/_NET_ACTIVE_WINDOW\(WINDOW\)/{print $NF}')

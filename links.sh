@@ -12,3 +12,4 @@ ln -s $PWD/.Xresources ~/.Xresources
 ln -s $PWD/.xinitrc ~/.xinitrc
 ln -s $PWD/coc-settings.json ~/.vim/coc-settings.json
 ln -s $PWD/.vimrc ~/.vimrc
+ln -s $PWD/.gitconfig ~/.gitconfig

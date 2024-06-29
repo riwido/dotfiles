@@ -1,5 +1,6 @@
 Xft.dpi: 180
-xterm*faceName: monospace:pixelsize=30
+xterm*faceName: Monospace
+xterm*faceSize: 8
 xterm*Background: black
 xterm*Foreground: white
 xterm*metaSendsEscape: true
