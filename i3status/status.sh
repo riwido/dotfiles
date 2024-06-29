@@ -2,7 +2,12 @@
 i3status -c <(envsubst < $HOME/.config/i3status/config) | while :
 do
     read line
-    id=$(xprop -root | awk '/_NET_ACTIVE_WINDOW\(WINDOW\)/{print $NF}')
-    name=$(xprop -id $id | awk '/_NET_WM_NAME/{$1=$2="";print}' | cut -d'"' -f2)
-    echo "$name | $line" || exit 1
+    WINDOW_ID=$(xprop -root | awk '/_NET_ACTIVE_WINDOW\(WINDOW\)/{print $NF}')
+    WINDOW_CLASS="$(xprop -id $WINDOW_ID | grep -oP 'WM_CLASS.*?, "\K[^"]*')"
+    custom="${WINDOW_CLASS}"
+    if [[ $WINDOW_CLASS == "firefox" ]]; then
+        profile=$(grep -oP "${pid}=\K.*" $ff_pidfile)
+        custom="firefox@${profile}"
+    fi
+    echo "${custom} | ${line}" || exit 1
 done

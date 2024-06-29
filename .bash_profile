@@ -28,6 +28,11 @@ export PATH="$HOME/gems/bin:$PATH"
 
 export PATH="/usr/lib/emscripten:$PATH"
 
+export ramfs_tmp=/dev/shm/$USER
+[[ -d $ramfs_tmp ]] || (mkdir -p $ramfs_tmp && chmod 700 $ramfs_tmp)
+
+export ff_pidfile=${ramfs_tmp}/ffpids
+
 cd $HOME/dotfiles
 
 git remote | grep -q public

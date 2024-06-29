@@ -1,4 +1,10 @@
 #!/usr/bin/env bash
+# relies on $ff_pidfile, setup in .bash_profile
 
+profile=$1
+[[ -z $profile ]] && profile="default-release"
 
-firefox &
+firefox -P $profile &
+
+pid=$!
+echo ${pid}=${profile} >> $ff_pidfile
