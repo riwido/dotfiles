@@ -22,4 +22,4 @@ if [[ -z $profile_path ]]; then
     exit 1
 fi
 
-ln -sf $PWD/relaxed.js $profile_path/user.js
+ln -sf $PWD/firefox-relaxed.cfg.js $profile_path/user.js
