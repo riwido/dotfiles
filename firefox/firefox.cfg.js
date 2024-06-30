@@ -1,23 +1,31 @@
 // no config on top line
 
 // blank page for new tabs
-pref('browser.newtabpage.enabled', false);
+defaultPref('browser.newtabpage.enabled', false);
 
 // blank page at startup
-pref('browser.startup.blankWindow', true);
+defaultPref('browser.startup.blankWindow', true);
 
 // ctrl+tab goes in order of last visited
-pref('browser.ctrlTab.sortByRecentlyUsed', true);
+defaultPref('browser.ctrlTab.sortByRecentlyUsed', true);
 
 // no about:config warning
-pref('browser.aboutConfig.showWarning', false);
+defaultPref('browser.aboutConfig.showWarning', false);
 
 // dark mode!
-pref('layout.css.prefers-color-scheme.content-override', 0);
+defaultPref('layout.css.prefers-color-scheme.content-override', 0);
 
+// No welcome page!
+defaultPref('trailhead.firstrun.didSeeAboutWelcome', true);
 
-let user_pref = pref;
+// no firefox startup page
+defaultPref('browser.startup.homepage', 'chrome://browser/content/blanktab.html');
 
+// don't show default bookmark (or any bookmark)
+user_pref('browser.toolbars.bookmarks.visibility', 'never');
+
+// use user_pref as alias for pref to keep the majority of the text matching the original
+let user_pref = defaultPref;
 
 //
 /******************************************************************************

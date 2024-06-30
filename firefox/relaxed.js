@@ -5,3 +5,4 @@ user_pref('dom.allow_cut_copy', true);
 user_pref('browser.privatebrowsing.autostart', false);
 user_pref('privacy.clearOnShutdown.cookies', false);
 user_pref('network.cookie.lifetimePolicy', 0);
+user_pref('privacy.sanitize.sanitizeOnShutdown', false);
