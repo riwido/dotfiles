@@ -2,13 +2,19 @@ general {
         colors = true
         interval = 1
 }
-
+order += "read_file active_class"
+#need to format this
+#order += "read_file uptime"
 order += "disk /"
 order += "path_exists VPN"
 order += "ethernet ${bar_intf}"
 order += "memory"
 order += "load"
 order += "tztime local"
+
+read_file active_class {
+    path = "${active_class}"
+}
 
 ethernet ${bar_intf} {
         format_up = "%ip"
