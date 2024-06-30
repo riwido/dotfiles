@@ -20,9 +20,11 @@ defaultPref('trailhead.firstrun.didSeeAboutWelcome', true);
 
 // no firefox startup page
 defaultPref('browser.startup.homepage', 'chrome://browser/content/blanktab.html');
+defaultPref('trailhead.firstrun.branches', 'nofirstrun-empty');
+defaultPref('browser.aboutwelcome.enabled', false);
 
 // don't show default bookmark (or any bookmark)
-user_pref('browser.toolbars.bookmarks.visibility', 'never');
+defaultPref('browser.toolbars.bookmarks.visibility', 'never');
 
 // use user_pref as alias for pref to keep the majority of the text matching the original
 let user_pref = defaultPref;
