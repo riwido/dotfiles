@@ -6,6 +6,11 @@ Copies firefox.cfg.js and autoconfig.js to firefox's install directory (using ar
 sudo ./install.sh
 ```
 
+### New profiles
+```
+firefox -no-remote -CreateProfile <name>
+```
+
 ### Relaxed
 
 see firefox-relaxed.cfg.js
