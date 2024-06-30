@@ -579,7 +579,7 @@ user_pref("extensions.webextensions.restrictedDomains", "");
 
 // PREF: disable showing about:blank/maximized window as soon as possible during startup [FF60+]
 // https://bugzilla.mozilla.org/1448423
-user_pref("browser.startup.blankWindow", false);
+// user_pref("browser.startup.blankWindow", false);
 
 // PREF: Disable the built-in PDF viewer
 // https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-2743
