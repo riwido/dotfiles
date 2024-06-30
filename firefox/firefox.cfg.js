@@ -26,6 +26,9 @@ defaultPref('browser.aboutwelcome.enabled', false);
 // don't show default bookmark (or any bookmark)
 defaultPref('browser.toolbars.bookmarks.visibility', 'never');
 
+// full screen stays inside the tile
+defaultPref('full-screen-api.ignore-widgets', true);
+
 // use user_pref as alias for pref to keep the majority of the text matching the original
 let user_pref = defaultPref;
 
