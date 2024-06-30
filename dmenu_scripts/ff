@@ -4,6 +4,13 @@
 profile=$1
 [[ -z $profile ]] && profile="default-release"
 
+profile_path=$(find $profiles -maxdepth 1 -type d -name "*.${profile}")
+#create profile instead??
+if [[ -z $profile_path ]]; then
+    i3-nagbar -f "pango:monospace 14" -m "${profile} doesn't exist"
+    exit 1
+fi
+
 firefox -P $profile &
 
 pid=$!

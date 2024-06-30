@@ -115,6 +115,9 @@ bindsym $mod+a focus parent
 # focus the child container
 bindsym $mod+Shift+A focus child
 
+# kill nagbar
+bindsym $mod+Escape exec --no-startup-id killall i3-nagbar
+
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1"
