@@ -43,7 +43,8 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
-floating_maximum_size 1000 x 1000
+floating_minimum_size 500 x 500
+floating_maximum_size 2000 x 2000
 
 # move tiling windows via drag & drop by left-clicking into the title bar,
 # or left-clicking anywhere into the window while holding the floating modifier.
@@ -217,6 +218,11 @@ smart_gaps on
 for_window [class="KeePassXC"] move to scratchpad, sticky enable, floating enable
 bindsym $mod+Shift+p [class="KeePassXC"] scratchpad show
 exec keepassxc
+
+
+# windows to spawn as floating
+for_window [class="Mesen" title="Settings"] floating enable, move position center
+
 
 # class                 border  backgr. text    indicator child_border
 client.focused           #4c7899 #55a095 #ffffff #ddbbbb   #55a095
