@@ -213,6 +213,11 @@ gaps inner 5px
 gaps outer 10px
 smart_gaps on
 
+# keepass scratchpad
+for_window [class="KeePassXC"] move to scratchpad, sticky enable, floating enable
+bindsym $mod+Shift+p [class="KeePassXC"] scratchpad show
+exec keepassxc
+
 # class                 border  backgr. text    indicator child_border
 client.focused           #4c7899 #55a095 #ffffff #ddbbbb   #55a095
 #client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
