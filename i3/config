@@ -229,7 +229,6 @@ for_window [class="Mesen" title="Settings"] floating enable, move position cente
 #
 bindsym $mod+n workspace next
 bindsym $mod+p workspace prev
-workspace_auto_back_and_forth yes
 
 # class                 border  backgr. text    indicator child_border
 client.focused           #4c7899 #55a095 #ffffff #ddbbbb   #55a095
