@@ -1,2 +1,4 @@
 #!/usr/bin/env bash
-xterm -class TerminalScratch -u8
+if ! ps --no-headers -o cmd -C xterm | grep TerminalScratch; then
+    exec xterm -class TerminalScratch -u8
+fi
