@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+xterm -class TerminalScratch -u8
