@@ -29,6 +29,11 @@ defaultPref('browser.toolbars.bookmarks.visibility', 'never');
 // full screen stays inside the tile
 defaultPref('full-screen-api.ignore-widgets', true);
 
+// disable sending middle of page search to address bar
+defaultPref('browser.newtabpage.activity-stream.improvesearch.handoffToAwesomebar', false)
+
+// browser.fixup.alternate.enabled <- look into this
+
 // use user_pref as alias for pref to keep the majority of the text matching the original
 let user_pref = defaultPref;
 
