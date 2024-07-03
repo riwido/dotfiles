@@ -2,4 +2,5 @@
 # ~/.bash_logout
 #
 
-rm $ff_pidfile
+# safety before doing an rm -rf
+[[ $ff_pidfile == /dev/shm/* ]] && rm -f $ff_pidfile
