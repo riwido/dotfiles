@@ -216,7 +216,9 @@ focus_on_window_activation none
 focus_follows_mouse no
 gaps inner 5px
 gaps outer 10px
-smart_gaps on
+
+# dunno default but this helps a weird issue with the surface book
+smart_gaps off
 
 # keepass scratchpad
 for_window [class="KeePassXC"] move to scratchpad, sticky enable, floating enable
