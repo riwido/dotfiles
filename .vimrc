@@ -1,5 +1,6 @@
 
-colorscheme industry
+" colorscheme industry
+colorscheme zaibatsu
 
 set encoding=utf-8
 
@@ -36,9 +37,11 @@ let g:coc_global_extensions = [
    \]
 
 " auto commands
-"
-:autocmd InsertEnter * set cursorline
-:autocmd InsertLeave * set nocursorline
+
+
+" Need to find better solution for making insert mode stand out
+":autocmd InsertEnter * set cursorline
+":autocmd InsertLeave * set nocursorline
 
 augroup Config
 autocmd!
