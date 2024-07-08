@@ -11,7 +11,8 @@ order += "disk /"
 order += "path_exists VPN"
 #order += "ethernet ${bar_intf}"
 #order += "memory"
-order += "load"
+#order += "load"
+order += "volume master"
 order += "tztime local"
 
 read_file active_class {
@@ -50,6 +51,14 @@ memory {
 
 disk "/" {
         format = "%free"
+}
+
+volume master {
+   format = "v%volume"
+   format_muted = "mute"
+   device = "default"
+   mixer = "Master"
+   mixer_idx = 0
 }
 
 read_file uptime {
