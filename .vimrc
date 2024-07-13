@@ -1,6 +1,6 @@
-
+" see end for colorscheme
 " colorscheme industry
-colorscheme zaibatsu
+" colorscheme zaibatsu
 
 set encoding=utf-8
 
@@ -22,7 +22,16 @@ endif
 call plug#begin()
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'airblade/vim-gitgutter'
+"Plug 'drewtempelmeyer/palenight.vim'
+"Plug 'guns/xterm-color-table.vim'
 call plug#end()
+
+:command Z colorscheme zaibatsu
+:command H colorscheme habamax
+
+" use XtermColorTable command from commented plugin above to see colors
+" This keeps the cursor from being hidden over parens
+autocmd ColorScheme zaibatsu highlight MatchParen term=NONE ctermbg=124 cterm=NONE
 
 let g:coc_global_extensions = [
    \'coc-css',
@@ -241,3 +250,4 @@ nmap <silent> ]g <Plug>(coc-diagnostic-next)
 "" Resume latest coc list
 "nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 " end coc.nvim example config
+colorscheme zaibatsu
