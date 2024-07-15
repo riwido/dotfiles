@@ -1,16 +1,14 @@
 live_config_reload = true
 
-[bell]
-
 [colors]
 draw_bold_text_with_bright_colors = true
 
 [colors.bright]
 black = "#545054"
-blue = "#5054f8"
-cyan = "#50fcf8"
+blue = "#22BBFF"
+cyan = "#33FFFF"
 green = "#50fc50"
-magenta = "#f854f8"
+magenta = "#FF66FF"
 red = "#f85450"
 white = "#f8fcf8"
 yellow = "#f8fc50"
@@ -21,12 +19,12 @@ text = "CellBackground"
 
 [colors.normal]
 black = "#000000"
-blue = "#7B9EFF"
-cyan = "#000000"
+blue = "#00DDFF"
+cyan = "#33FFFF"
 green = "#00a800"
 magenta = "#a800a8"
 red = "#a80000"
-white = "#a8a8a8"
+white = "#FFFFFF"
 yellow = "#a85400"
 
 [colors.primary]
@@ -45,6 +43,4 @@ family = "Hack"
 history = 10000
 
 [window]
-dynamic_title = true
-opacity = 0.7
 title = "tty"
