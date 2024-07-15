@@ -1,8 +1,10 @@
-Xft.dpi: 180
-xterm*faceName: Monospace
-xterm*faceSize: 8
-xterm*Background: black
-xterm*Foreground: white
+*.dpi: 180
+*termName: xterm-256color
+*faceName: Hack:size=12
+*font: 7x13
+*faceSize: 8
+*Background: rgb:0f/0f/1f
+*Foreground: white
 xterm*metaSendsEscape: true
 *VT100*translations:      #override \n\
         Ctrl Shift <Key>V:  insert-selection(SELECT)
