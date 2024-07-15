@@ -8,7 +8,9 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set expandtab
-
+set laststatus=2
+set guioptions=
+set guifont="Hack Regular:h18"
 set mouse=a " mouse & xterm interaction
 set showcmd " show command as its typed
 
@@ -32,6 +34,8 @@ call plug#end()
 " use XtermColorTable command from commented plugin above to see colors
 " This keeps the cursor from being hidden over parens
 autocmd ColorScheme zaibatsu highlight MatchParen term=NONE ctermbg=124 cterm=NONE
+autocmd ColorScheme zaibatsu highlight StatusLine guibg=#331111 guifg=#FFFFFF
+autocmd ColorScheme zaibatsu highlight StatusLine ctermbg=52 ctermfg=white
 
 let g:coc_global_extensions = [
    \'coc-css',
