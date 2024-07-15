@@ -68,5 +68,6 @@ alias gd='git diff'
 alias ga='git add'
 alias gc='git commit'
 alias ssh='TERM=xterm-256color ssh'
+alias vim=nvim
 
 PS1='[\u@\h \W]\$ '
