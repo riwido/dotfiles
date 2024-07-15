@@ -20,10 +20,16 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+" cd .vim; vc; va; python -m pip install pynvim
+if has('nvim')
+    let g:python3_host_prog = $HOME . '/.vim/.venv/bin/python'
+endif
+
 " plugin list
 call plug#begin()
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'airblade/vim-gitgutter'
+Plug 'psf/black', { 'branch': 'stable' }
 "Plug 'drewtempelmeyer/palenight.vim'
 "Plug 'guns/xterm-color-table.vim'
 call plug#end()
@@ -255,3 +261,26 @@ nmap <silent> ]g <Plug>(coc-diagnostic-next)
 "nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 " end coc.nvim example config
 colorscheme zaibatsu
+
+
+
+" help normal-index to see that normally Ctrl+N is j, Ctrl+P is k
+let g:colors = getcompletion('', 'color')
+func! NextColorscheme()
+    let idx = index(g:colors, g:colors_name)
+    return (idx + 1 >= len(g:colors) ? g:colors[0] : g:colors[idx + 1])
+endfunction
+func! PreviousColorscheme()
+    let idx = index(g:colors, g:colors_name)
+    return (idx - 1 < 0 ? g:colors[-1] : g:colors[idx - 1])
+endfunction
+nnoremap <C-n> :exe "colo " .. NextColorscheme()<CR>
+nnoremap <C-p> :exe "colo " .. PreviousColorscheme()<CR>
+autocmd! ColorScheme *
+autocmd ColorScheme * echo g:colors_name
+
+if has('nvim')
+    set viminfo+=n$HOME/.vim/nviminfo
+else
+    set viminfo+=n$HOME/.vim/viminfo
+endif

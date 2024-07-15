@@ -25,6 +25,7 @@ make
 man-db
 man-pages
 mono
+neovim
 nfs-utils
 nodejs
 npm

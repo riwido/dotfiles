@@ -81,3 +81,13 @@ done
 
 # go back!
 cd ~
+
+if ! [[ -e .vim/.venv ]]; then
+    mkdir -p .vim
+    cd .vim
+    virtualenv .venv
+    . .venv/bin/activate
+    pip install pynvim
+    deactivate
+    cd ..
+fi
