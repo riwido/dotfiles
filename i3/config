@@ -53,7 +53,7 @@ tiling_drag modifier titlebar
 
 bindsym $mod+Shift+s exec xfce4-screenshooter
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -228,7 +228,7 @@ exec keepassxc
 # terminal scratchpad
 for_window [class="TerminalScratch"] move to scratchpad, floating enable
 bindsym $mod+t [class="TerminalScratch"] scratchpad show
-exec xterm -class TerminalScratch -u8
+exec alacritty -class TerminalScratch
 
 # windows to spawn as floating
 for_window [class="Mesen" title="Settings"] floating enable, move position center

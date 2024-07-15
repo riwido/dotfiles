@@ -3,7 +3,7 @@
 *faceName: Hack:size=12
 *font: 7x13
 *faceSize: 8
-*Background: rgb:0f/0f/1f
+*Background: rgb:0f/0f/0f
 *Foreground: white
 xterm*metaSendsEscape: true
 *VT100*translations:      #override \n\
