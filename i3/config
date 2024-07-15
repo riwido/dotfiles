@@ -228,7 +228,7 @@ exec keepassxc
 # terminal scratchpad
 for_window [class="TerminalScratch"] move to scratchpad, floating enable
 bindsym $mod+t [class="TerminalScratch"] scratchpad show
-exec alacritty -class TerminalScratch
+exec alacritty --class TerminalScratch
 
 # windows to spawn as floating
 for_window [class="Mesen" title="Settings"] floating enable, move position center

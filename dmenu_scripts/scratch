@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 if ! ps --no-headers -o cmd -C alacritty| grep TerminalScratch; then
-    exec alacritty -class TerminalScratch
+    exec alacritty --class TerminalScratch
 fi
