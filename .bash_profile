@@ -64,7 +64,7 @@ fi
 xmissing=0
 if [[ " ${installed[*]} " =~ " xorg-server " ]]; then
     while read app; do
-        if [[ " ${installed[*]} " =~ " $app " ]]; then
+        if ! [[ " ${installed[*]} " =~ " $app " ]]; then
             printf "Warning: %s not installed\n" $app
             xmissing=1
         fi
@@ -73,6 +73,11 @@ fi
 if [[ $xmissing -eq 1 ]]; then
     printf 'resolve:\npacman -S $(<dotfiles/xapps)\n'
 fi
+
+# all links accounted for?
+cat links.sh | grep ^ln | cut -d' ' -f4 | while read link; do
+    test -e ${link/\~/$HOME} || echo "missing ${link} from ~/dotfiles/links.sh"
+done
 
 # go back!
 cd ~
