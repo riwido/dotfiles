@@ -67,6 +67,6 @@ alias gs='git status'
 alias gd='git diff'
 alias ga='git add'
 alias gc='git commit'
-
+alias ssh='TERM=xterm-256color ssh'
 
 PS1='[\u@\h \W]\$ '
