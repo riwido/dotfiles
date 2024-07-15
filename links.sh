@@ -3,6 +3,7 @@
 mkdir -p ~/.config
 mkdir -p ~/.vim
 
+ln -s $PWD/nvim ~/.config/nvim
 ln -s $PWD/alacritty.toml ~/.config/alacritty.toml
 ln -s $PWD/i3 ~/.config/
 ln -s $PWD/i3status ~/.config/
