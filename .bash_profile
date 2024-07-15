@@ -66,7 +66,7 @@ if ! [[ " ${installed[*]} " =~ " xorg-server " ]]; then
     while read app; do
         if [[ " ${installed[*]} " =~ " $app " ]]; then
             printf "Warning: %s not installed\n" $app
-            missing=1
+            xmissing=1
         fi
     done < xapps
 fi
