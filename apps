@@ -10,7 +10,6 @@ dotnet-runtime
 dotnet-sdk
 efibootmgr
 emscripten
-feh
 fzf
 gcc
 gdb
