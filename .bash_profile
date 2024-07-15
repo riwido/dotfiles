@@ -44,7 +44,12 @@ fi
 printf "Updating dotfiles\n"
 git pull public main
 
+
+
+# Keep packages lined up.  Separate by not-gui/gui
 readarray -t installed < <(pacman -Q | cut -d' ' -f1)
+
+missing=0
 while read app; do
     if ! [[ " ${installed[*]} " =~ " $app " ]]; then
         printf "Warning: %s not installed\n" $app
@@ -52,6 +57,11 @@ while read app; do
     fi
 done < apps
 
+if [[ $missing -eq 1 ]]; then
+    printf 'resolve:\npacman -S $(<dotfiles/apps)\n'
+fi
+
+xmissing=0
 if ! [[ " ${installed[*]} " =~ " xorg-server " ]]; then
     while read app; do
         if [[ " ${installed[*]} " =~ " $app " ]]; then
@@ -60,7 +70,9 @@ if ! [[ " ${installed[*]} " =~ " xorg-server " ]]; then
         fi
     done < xapps
 fi
+if [[ $xmissing -eq 1 ]]; then
+    printf 'resolve:\npacman -S $(<dotfiles/xapps)\n'
+fi
 
-if [[ -z $missing ]]; then echo 'cd dotfiles; pacman -S $(cat apps [xapps])'; fi
 # go back!
 cd ~
