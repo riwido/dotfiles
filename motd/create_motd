@@ -2,9 +2,13 @@
 
 packages=$(pacman -Syu --print-format "%f" | \
     grep -vP '(?::: Synchronizing|(?:core|extra) (?:downloading|is up to date))'
-)
+    )
 
 if [[ -n $packages ]]; then
     echo "New packages available:"
-    echo $packages
+    for package in $packages; do
+                echo $package
+    done
+else
+    echo "Packages up to date"
 fi
