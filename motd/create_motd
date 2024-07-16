@@ -3,6 +3,8 @@
 packages=$(pacman -Syu --print-format "%f" | \
     grep -vP '(?::: Synchronizing|(?:core|extra) (?:downloading|is up to date))'
 )
-echo "Packages: $packages"
 
-echo "HI"
+if [[ -n $packages ]]; then
+    echo "New packages available:"
+    echo $packages
+fi
