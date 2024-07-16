@@ -237,6 +237,10 @@ for_window [class="Mesen" title="Settings"] floating enable, move position cente
 for_window [class="zenity"] floating enable border normal
 for_window [class="zenity"] resize set 800 600
 
+for_window[class="SimpleScreenRecorder"] move to scratchpad, floating enable
+bindsym $mod+shift+o [class="SimpleScreenRecorder"] scratchpad show
+exec simplescreenrecorder
+
 # didn't end up susing this
 # bindsym $mod+n workspace next
 # bindsym $mod+p workspace prev

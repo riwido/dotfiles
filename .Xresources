@@ -1,4 +1,4 @@
-*.dpi: 180
+Xft.dpi: 180
 *termName: xterm-256color
 *faceName: Hack:size=12
 *font: 7x13

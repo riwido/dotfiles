@@ -38,12 +38,27 @@ call plug#end()
 
 :command Z colorscheme zaibatsu
 :command H colorscheme habamax
+:command S colorscheme slate
 
 " use XtermColorTable command from commented plugin above to see colors
 " This keeps the cursor from being hidden over parens
 autocmd ColorScheme zaibatsu highlight MatchParen term=NONE ctermbg=124 cterm=NONE
 autocmd ColorScheme zaibatsu highlight StatusLine guibg=#331111 guifg=#FFFFFF
 autocmd ColorScheme zaibatsu highlight StatusLine ctermbg=52 ctermfg=white
+
+
+" slate, but with custom bg color
+let g:bgcolor = "#001f1f"
+autocmd! ColorScheme slate
+autocmd ColorScheme slate execute("highlight Normal guifg=#ffffff guibg=" . g:bgcolor . " gui=NONE cterm=NONE")
+autocmd ColorScheme slate execute("highlight PmenuSel guifg=" . g:bgcolor . " guibg=#d7d787 gui=NONE cterm=NONE")
+autocmd ColorScheme slate execute("highlight PmenuSbar guifg=NONE guibg=" . g:bgcolor . " gui=NONE cterm=NONE")
+autocmd ColorScheme slate execute("highlight ToolbarButton guifg=" . g:bgcolor . " guibg=#d7d787 gui=NONE cterm=NONE")
+autocmd ColorScheme slate execute("highlight SignColumn guifg=NONE guibg=" . g:bgcolor . " gui=NONE cterm=NONE")
+autocmd ColorScheme slate execute("highlight ModeMsg guifg=" . g:bgcolor . " guibg=#ffd700 gui=NONE cterm=NONE")
+autocmd ColorScheme slate execute("highlight WildMenu guifg=" . g:bgcolor . " guibg=#d7d787 gui=NONE cterm=NONE")
+autocmd ColorScheme slate execute("highlight lCursor guifg=" . g:bgcolor . " guibg=#ffafaf gui=NONE cterm=NONE")
+
 
 let g:coc_global_extensions = [
    \'coc-css',
@@ -73,15 +88,30 @@ augroup END
 
 :command FF CocCommand prettier.formatFile
 
-" Come back to this later
-" function! ColorPicker()
-"     let selected = expand("<cword>")
-"     let is_color = matchstr(selected, '[a-fA-F0-9]\{6\}')
-"     if empty(is_color)
-"        return
-"     endif
-"
-" endfunction
+function! ColorPicker()
+    let selected = expand("<cword>")
+    let is_color = matchstr(selected, '\v[a-fA-F0-9]{6}')
+    if empty(is_color)
+        echomsg "Not a color"
+        return
+    endif
+    let output = system("zenity --color-selection --color=#" . selected . " 2>/dev/null")
+    let converted = trim(ConvertRgbToHex(output))
+    if len(converted) == 6
+        execute "normal! ciw" . converted
+        stopinsert
+    else
+        echo "No color received"
+    endif
+endfunction
+
+function! ConvertRgbToHex(str)
+    " echomsg "ConvertRbgToHex running against " . a:string
+    let pat = '\vrgb\((\d+),(\d+),(\d+)\)'
+    return substitute(a:str, pat, '\=printf("%02x%02x%02x",(submatch(1)),submatch(2),submatch(3))', 'g')
+endfunction
+
+:command C call ColorPicker()
 
 function! StripWhitespace()
     "if &ft == 'markdown'
@@ -90,8 +120,6 @@ function! StripWhitespace()
     let pos = getcurpos()
     %s#\s\+$##e " EOL
     %s#\($\n\s*\)\+\%$##e " EOF
-    " %s#\([^\n]\)\%$#\1\n#e " add missing eof newline
-    " (this doesn't work and maybe isn't needed?)
     call setpos('.', pos)
 endfunction
 
@@ -275,7 +303,6 @@ nmap <silent> ]g <Plug>(coc-diagnostic-next)
 "" Resume latest coc list
 "nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 " end coc.nvim example config
-colorscheme zaibatsu
 
 
 
@@ -299,3 +326,5 @@ if has('nvim')
 else
     set viminfo+=n$HOME/.vim/viminfo
 endif
+
+colorscheme slate
