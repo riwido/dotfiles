@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+packages=$(pacman -Syu --print-format "%f" | \
+    grep -vP '(?::: Synchronizing|(?:core|extra) (?:downloading|is up to date))'
+)
+echo "Packages: $packages"
+
+echo "HI"

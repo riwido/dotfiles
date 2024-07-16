@@ -1,0 +1,9 @@
+[Unit]
+Description=Create MOTD at startup
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/bash -c "/usr/bin/create_motd > /etc/motd"
+
+[Install]
+WantedBy=multi-user.target
