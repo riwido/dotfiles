@@ -20,7 +20,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-" cd .vim; vc; va; python -m pip install pynvim
+" this .venv should be created in .bash_profile
 if has('nvim')
     let g:python3_host_prog = $HOME . '/.vim/.venv/bin/python'
 endif
@@ -125,9 +125,12 @@ inoremap <silent><expr> <TAB>
       \ coc#refresh()
 inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
+
 "" Make <CR> to accept selected completion item or notify coc.nvim to format
+" modified to <C-CR>
+
 "" <C-g>u breaks current undo, please make your own choice
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+inoremap <silent><expr> <C-CR> coc#pum#visible() ? coc#pum#confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 function! CheckBackspace() abort
