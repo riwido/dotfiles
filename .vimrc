@@ -29,10 +29,12 @@ endif
 call plug#begin()
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'airblade/vim-gitgutter'
+"Plug 'DougBeney/pickachu'
 Plug 'psf/black', { 'branch': 'stable' }
 "Plug 'drewtempelmeyer/palenight.vim'
 "Plug 'guns/xterm-color-table.vim'
 call plug#end()
+
 
 :command Z colorscheme zaibatsu
 :command H colorscheme habamax
@@ -70,6 +72,16 @@ autocmd BufWritePost *.vimrc source ~/.vimrc
 augroup END
 
 :command FF CocCommand prettier.formatFile
+
+" Come back to this later
+" function! ColorPicker()
+"     let selected = expand("<cword>")
+"     let is_color = matchstr(selected, '[a-fA-F0-9]\{6\}')
+"     if empty(is_color)
+"        return
+"     endif
+"
+" endfunction
 
 function! StripWhitespace()
     "if &ft == 'markdown'

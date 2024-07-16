@@ -232,9 +232,14 @@ exec alacritty --class TerminalScratch
 
 # windows to spawn as floating
 for_window [class="Mesen" title="Settings"] floating enable, move position center
-#
-bindsym $mod+n workspace next
-bindsym $mod+p workspace prev
+
+# unused for now but leaving as example
+for_window [class="zenity"] floating enable border normal
+for_window [class="zenity"] resize set 800 600
+
+# didn't end up susing this
+# bindsym $mod+n workspace next
+# bindsym $mod+p workspace prev
 
 # class                 border  backgr. text    indicator child_border
 client.focused           #4c7899 #55a095 #ffffff #ddbbbb   #55a095
