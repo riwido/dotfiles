@@ -1,5 +1,18 @@
 #!/usr/bin/env bash
 
+
+# check if reboot needed
+running=$(uname -r | sed 's/-/./g')
+kernel=linux
+if [[ $running =~ ".lts" ]]; then
+    kernel=linux-lts
+    running=${running%.l*}
+fi
+installed=$(pacman -Q $kernel | cut -d' ' -f2 | sed 's/-/./g')
+[[ $installed == $running ]] || printf "Reboot required. %s->%s\n" $running $installed
+
+
+# check for update
 packages=$(pacman -Syu --print-format "%f" | \
     grep -vP '(?::: Synchronizing|(?:core|extra) (?:downloading|is up to date))'
     )
