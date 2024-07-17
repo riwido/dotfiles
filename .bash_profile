@@ -79,7 +79,7 @@ cat links.sh | grep ^ln | cut -d' ' -f4 | while read link; do
     test -e ${link/\~/$HOME} || echo "missing ${link} from ~/dotfiles/links.sh"
 done
 
-cmp motd/create_motd /usr/bin/create_motd || "motd/create_motd out of date"
+cmp motd/create_motd /usr/bin/create_motd || echo "motd/create_motd out of date"
 
 # go back!
 cd ~
