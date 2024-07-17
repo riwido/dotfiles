@@ -48,10 +48,11 @@ let g:coc_global_extensions = [
    \]
 
 " auto commands
-:autocmd InsertEnter * colorscheme industry
-:autocmd InsertLeave * colorscheme zaibatsu
-
+:autocmd InsertEnter * set cursorline
+:autocmd InsertLeave * set nocursorline
 augroup Config
+
+
 autocmd!
 " autoreload vimrc
 autocmd BufWritePre * call StripWhitespace()
@@ -146,8 +147,8 @@ func! PreviousColorscheme()
 endfunction
 nnoremap <C-n> :exe "colo " .. NextColorscheme()<CR>
 nnoremap <C-p> :exe "colo " .. PreviousColorscheme()<CR>
-autocmd! ColorScheme *
-autocmd ColorScheme * echo g:colors_name
+" autocmd! ColorScheme *
+" autocmd ColorScheme * echo g:colors_name
 
 if has('nvim')
     set viminfo+=n$HOME/.vim/nviminfo
@@ -155,4 +156,4 @@ else
     set viminfo+=n$HOME/.vim/viminfo
 endif
 
-Z
+colorscheme zaibatsu
