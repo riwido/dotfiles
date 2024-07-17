@@ -67,7 +67,17 @@ alias gs='git status'
 alias gd='git diff'
 alias ga='git add'
 alias gc='git commit'
-alias ssh='TERM=xterm-256color ssh'
 alias vim=nvim
+
+_ssh () {
+    ssh_bg=$'[colors.primary]\nbackground = "#1f0000"'
+    normal_bg=$'[colors.primary]\nbackground = "#001f1f"'
+    TERM=xterm-256color
+    alacritty msg config "$ssh_bg"
+    ssh "$@"
+    alacritty msg config "$normal_bg"
+    }
+
+alias ssh=_ssh
 
 PS1='[\u@\h \W]\$ '
