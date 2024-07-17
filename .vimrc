@@ -48,8 +48,8 @@ let g:coc_global_extensions = [
    \]
 
 " auto commands
-:autocmd InsertEnter * E
-:autocmd InsertLeave * Z
+:autocmd InsertEnter * colorscheme industry
+:autocmd InsertLeave * colorscheme zaibatsu
 
 augroup Config
 autocmd!
