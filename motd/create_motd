@@ -25,3 +25,4 @@ if [[ -n $packages ]]; then
 else
     echo "Packages up to date"
 fi
+systemd-cat -t create_motd echo "create_motd completed"

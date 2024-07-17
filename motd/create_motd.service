@@ -2,8 +2,9 @@
 Description=Create MOTD at startup
 
 [Service]
-Type=oneshot
 ExecStart=/usr/bin/bash -c "/usr/bin/create_motd > /etc/motd"
+Restart=always
+RestartSec=2h
 
 [Install]
 WantedBy=multi-user.target
