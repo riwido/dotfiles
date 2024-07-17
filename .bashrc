@@ -70,13 +70,16 @@ alias gc='git commit'
 alias vim=nvim
 
 _ssh () {
-    ssh_bg=$'[colors.primary]\nbackground = "#1f0000"'
-    normal_bg=$'[colors.primary]\nbackground = "#001f1f"'
     TERM=xterm-256color
-    has_alacritty=$(command -v alacritty >/dev/null)
-    [[ -n has_alacritty ]] && alacritty msg config "$ssh_bg"
+    has_alacritty=$(command -v alacritty)
+
+    ssh_bg=$'[colors.primary]\nbackground = "#1f0000"'
+    [[ -n $has_alacritty ]] && alacritty msg config "$ssh_bg"
+
     ssh "$@"
-    [[ -n has_alacritty ]] && alacritty msg config "$normal_bg"
+
+    normal_bg=$'[colors.primary]\nbackground = "#001f1f"'
+    [[ -n $has_alacritty ]] && alacritty msg config "$normal_bg"
     }
 
 alias ssh=_ssh
