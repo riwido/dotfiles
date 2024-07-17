@@ -76,7 +76,11 @@ _ssh () {
     ssh_bg=$'[colors.primary]\nbackground = "#1f0000"'
     [[ -n $has_alacritty ]] && alacritty msg config "$ssh_bg"
 
-    ssh "$@"
+    if [[ -t 0 ]]; then
+        \ssh "$@"
+    else
+        \ssh "$@" < <(cat -)
+    fi
 
     normal_bg=$'[colors.primary]\nbackground = "#001f1f"'
     [[ -n $has_alacritty ]] && alacritty msg config "$normal_bg"
