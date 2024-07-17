@@ -73,9 +73,10 @@ _ssh () {
     ssh_bg=$'[colors.primary]\nbackground = "#1f0000"'
     normal_bg=$'[colors.primary]\nbackground = "#001f1f"'
     TERM=xterm-256color
-    alacritty msg config "$ssh_bg"
+    has_alacritty=$(command -v alacritty >/dev/null)
+    [[ -n has_alacritty ]] && alacritty msg config "$ssh_bg"
     ssh "$@"
-    alacritty msg config "$normal_bg"
+    [[ -n has_alacritty ]] && alacritty msg config "$normal_bg"
     }
 
 alias ssh=_ssh
