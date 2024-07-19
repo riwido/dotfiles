@@ -4,7 +4,6 @@
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
-printf "running .bashrc\n"
 #set -o vi
 
 is_cmd () {
@@ -65,12 +64,14 @@ alias va='source .venv/bin/activate'
 alias vc='virtualenv .venv'
 alias gs='git status'
 alias gd='git diff'
+alias gds='git diff --staged'
 alias ga='git add'
-alias gc='git commit'
+alias gaa='git add -A'
+alias gc='git commit -m'
 alias vim=nvim
 
 _ssh () {
-    TERM=xterm-256color
+    TERM=xterm
     has_alacritty=$(command -v alacritty)
 
     ssh_bg=$'[colors.primary]\nbackground = "#1f0000"'

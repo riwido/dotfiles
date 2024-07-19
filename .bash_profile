@@ -4,9 +4,6 @@
 
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
-printf "running .bash_profile\n"
-
-
 # Set defaults here.  Tried to use ${FOO:-BAR} with envsubst but it didn't work
 # envsubst < <(echo '${foo:-bar}')
 export bar_intf=_first_
@@ -48,6 +45,18 @@ git pull public main
 
 # Keep packages lined up.  Separate by not-gui/gui
 readarray -t installed < <(pacman -Q | cut -d' ' -f1)
+
+# list all packages explicity installed and not required as dependencies
+readarray -t extras < <(pacman -Qet | cut -d' ' -f1)
+
+readarray -t apps < apps
+readarray -t xapps < xapps
+
+for extra in "${extras[@]}"; do
+    if ! [[ " ${apps[*]} " =~ " $extra " ]] && ! [[ " ${xapps[*]} " =~ " $extra " ]]; then
+        printf "Extra app installed: %s\n" $extra
+    fi
+done
 
 missing=0
 while read app; do
