@@ -21,6 +21,7 @@ inetutils
 intel-ucode
 linux
 linux-firmware
+lsof
 make
 man-db
 man-pages
@@ -40,7 +41,9 @@ ripgrep
 rsync
 ruby
 sshpass
+strace
 sudo
+tcpdump
 texinfo
 unrar
 unzip
