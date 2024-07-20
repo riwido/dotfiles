@@ -70,21 +70,20 @@ alias gaa='git add -A'
 alias gc='git commit -m'
 alias vim=nvim
 
+oTERM=$TERM
 _ssh () {
-    TERM=xterm
-    has_alacritty=$(command -v alacritty)
-
-    ssh_bg=$'[colors.primary]\nbackground = "#1f0000"'
-    [[ -n $has_alacritty ]] && alacritty msg config "$ssh_bg"
-
+    # setting TERM=xterm is a workaround with
+    # remote shells that don't know what an alacritty is
+    [[ $oTERM == 'alacritty' ]] && eval "TERM=xterm"
+    ssh_bg=$'[colors.primary]\nbackground = "#1f001f"'
+    [[ $oTERM == 'alacritty' ]] && alacritty msg config "$ssh_bg"
     if [[ -t 0 ]]; then
         \ssh "$@"
     else
         \ssh "$@" < <(cat -)
     fi
-
     normal_bg=$'[colors.primary]\nbackground = "#001f1f"'
-    [[ -n $has_alacritty ]] && alacritty msg config "$normal_bg"
+    [[ $oTERM == 'alacritty' ]] && alacritty msg config "$normal_bg"
     }
 
 alias ssh=_ssh
