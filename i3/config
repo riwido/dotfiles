@@ -211,7 +211,8 @@ bar {
     bindsym button4 nop
     bindsym button5 nop
 }
-
+    bindsym button4 nop
+    bindsym button5 nop
 focus_on_window_activation none
 focus_follows_mouse no
 gaps inner 5px
