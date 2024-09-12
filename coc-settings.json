@@ -4,6 +4,9 @@
     "prettier.printWidth": 80,
     "prettier.trailingComma": "all",
 	"python.formatting.provider": "black",
+    "inlayHint.enable": false,
+    "pyright.inlayHint.enable": false,
+    "pyright.disableTaggedHints": true,
 	"pyright.inlayHints.variableTypes": false,
 	"pyright.inlayHints.parameterTypes": false,
 	"pyright.inlayHints.functionReturnTypes": false
