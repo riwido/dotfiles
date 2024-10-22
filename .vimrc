@@ -160,3 +160,8 @@ colorscheme zaibatsu
 
 " from Kirjava, \gb to get blame for higlighted line
 vnoremap <Leader>gb :<C-U>tabnew \|r!cd <C-R>=expand("%:p:h")<CR> && git annotate -L<C-R>=line("'<")<CR>,<C-R>=line("'>") <CR> <C-R>=expand("%:t") <CR><CR>
+
+
+
+
+nnoremap <Leader>c ggVG"+y<C-o>

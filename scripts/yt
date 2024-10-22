@@ -1,0 +1,50 @@
+#!/usr/bin/env python
+
+from __future__ import annotations
+
+import re
+import yt_dlp
+import pathlib
+import argparse
+
+def get_options(dest_file):
+    return dict(
+        outtmpl=str(dest_file.absolute()),
+#        postprocessors=[{
+#            "key": "FFmpegExtractAudio",
+#            "preferredcodec": "mp3",
+#            "preferredquality": "192",
+#        }],
+    )
+
+def yt_url(arg) -> str:
+    """
+    validation can go here
+    """
+    return str(arg)
+
+
+def dest_file(arg) -> pathlib.Path:
+    """
+    validation can go here
+    """
+    return pathlib.Path(arg)
+
+parser = argparse.ArgumentParser()
+parser.add_argument('url', type=yt_url, help='Link to video')
+parser.add_argument('dest', type=dest_file, help="Destination file")
+
+args = parser.parse_args()
+
+print(f'Saving {args.url} to {args.dest}')
+
+try:
+    with yt_dlp.YoutubeDL(get_options(args.dest)) as downloader:
+        downloader.download(args.url)
+except Exception as exc:
+    print(f'problem: {type(exc).__name__}: {exc!s}')
+    import sys
+    sys.exit()
+
+
+import subprocess
