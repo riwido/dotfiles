@@ -45,6 +45,5 @@ history = 10000
 [window]
 title = "tty"
 
-[[hints.enabled]]
-command = ""
-regex = "(ipfs:|ipns:|magnet:|mailto:|gemini://|gopher://|https://|http://|news:|file:|git://|ssh:|ftp://)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`]+"
+[hints]
+enabled = []
