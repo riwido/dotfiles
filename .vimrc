@@ -163,4 +163,18 @@ vnoremap <Leader>gb :<C-U>tabnew \|r!cd <C-R>=expand("%:p:h")<CR> && git annotat
 
 nnoremap <Leader>c ggVG"+y<C-o>
 
-autocmd FileType asm setlocal indentexpr=
+func! GetAsmIndentCustom()
+    let line = getline(v:lnum)
+    let ind = shiftwidth() + 4
+    if line =~ '^\s*\k\+:' || line =~ '^\s*;'
+        let ind = 0
+    endif
+    return ind
+endfunction
+
+autocmd FileType asm setlocal indentexpr=GetAsmIndentCustom()
+autocmd FileType asm setlocal indentkeys=<:>,;,!^F,o,O
+
+" :redir! > vim_keys.txt
+" :silent verbose map
+" :redir END
