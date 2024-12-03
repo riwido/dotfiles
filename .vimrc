@@ -173,8 +173,12 @@ func! GetAsmIndentCustom()
 endfunction
 
 autocmd FileType asm setlocal indentexpr=GetAsmIndentCustom()
-autocmd FileType asm setlocal indentkeys=<:>,;,!^F,o,O
+" autocmd FileType asm setlocal indentkeys=<:>,;,!^F,o,O
+autocmd FileType asm setlocal indentkeys=
 
 " :redir! > vim_keys.txt
 " :silent verbose map
 " :redir END
+
+" disable the incredibly annoying auto comment in a new line
+set formatoptions=
