@@ -224,8 +224,7 @@ for_window [class="Mesen" title="Settings"] floating enable, move position cente
 for_window [class="zenity"] floating enable border normal
 for_window [class="zenity"] resize set 800 600
 
-bindsym $mod+Tab workspace next
-bindsym $mod+Shift+Tab workspace prev
+bindsym $mod+Tab workspace back_and_forth
 
 # class                 border  backgr. text    indicator child_border
 client.focused           #4c7899 #55a095 #ffffff #ddbbbb   #55a095
