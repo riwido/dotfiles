@@ -8,6 +8,39 @@ set laststatus=2
 set mouse=a " mouse & xterm interaction
 set showcmd " show command as its typed
 
+
+" experiment with Tab to switch between buffers
+function SetPreviousBuffer()
+    let current = bufnr('%')
+    let buftype = getbufvar(current, '&buftype', v:null)
+    let bufhidden = getbufvar(current, '&bufhidden', v:null)
+    if buftype == "help" || bufhidden == "delete"
+        return
+    endif
+    let g:previous_buffer = bufnr('%')
+endfunction
+
+function GoToPreviousBuffer()
+    try
+        execute ":buffer " . g:previous_buffer
+    catch
+        echo "g:previous_buffer not set yet"
+    endtry
+endfunction
+
+autocmd BufLeave * call SetPreviousBuffer()
+nmap <Tab> :call GoToPreviousBuffer()<CR>
+
+function OpenHelpAsOnly()
+    let buftype = getbufvar(bufnr('%'), '&buftype', v:null)
+    if buftype == "help"
+        execute ":only"
+    endif
+endfunction
+autocmd BufEnter * call OpenHelpAsOnly()
+
+
+
 " install https://github.com/junegunn/vim-plug if it isn't there
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent execute '!curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
