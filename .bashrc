@@ -61,7 +61,7 @@ alias clip='xclip -selection clipboard'
 
 # need to figure out a universal solution to the unreadable 777 files
 #alias ls='ls --color=auto'
-alias grep='grep --color=auto'
+#alias grep='grep --color=auto'
 alias va='source .venv/bin/activate'
 alias vc='virtualenv .venv'
 alias gs='git status'
