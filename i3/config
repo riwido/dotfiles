@@ -51,7 +51,7 @@ floating_maximum_size 2000 x 2000
 tiling_drag modifier titlebar
 
 
-bindsym $mod+Shift+s exec xfce4-screenshooter
+# bindsym $mod+Shift+s exec xfce4-screenshooter
 # start a terminal
 bindsym $mod+Return exec alacritty
 
@@ -72,23 +72,11 @@ bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
-# alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
-
 # move focused window
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
-
-# alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
 bindsym $mod+g split h
@@ -181,12 +169,6 @@ mode "resize" {
         bindsym k resize shrink height 5 px or 5 ppt
         bindsym l resize grow width 5 px or 5 ppt
 
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 5 px or 5 ppt
-        bindsym Down resize grow height 5 px or 5 ppt
-        bindsym Up resize shrink height 5 px or 5 ppt
-        bindsym Right resize grow width 5 px or 5 ppt
-
         # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
         bindsym Escape mode "default"
@@ -211,8 +193,10 @@ bar {
     bindsym button4 nop
     bindsym button5 nop
 }
-    bindsym button4 nop
-    bindsym button5 nop
+
+bindsym button4 nop
+bindsym button5 nop
+
 focus_on_window_activation none
 focus_follows_mouse no
 gaps inner 5px
@@ -224,7 +208,9 @@ smart_gaps off
 # keepass scratchpad
 for_window [class="KeePassXC"] move to scratchpad, sticky enable, floating enable
 bindsym $mod+Shift+p [class="KeePassXC"] scratchpad show
+for_window [class="(?i)^keepassxc.*"][window_type=dialog] focus
 exec keepassxc
+
 
 # terminal scratchpad
 for_window [class="TerminalScratch"] move to scratchpad, floating enable
@@ -238,13 +224,8 @@ for_window [class="Mesen" title="Settings"] floating enable, move position cente
 for_window [class="zenity"] floating enable border normal
 for_window [class="zenity"] resize set 800 600
 
-for_window[class="SimpleScreenRecorder"] move to scratchpad, floating enable
-bindsym $mod+shift+o [class="SimpleScreenRecorder"] scratchpad show
-exec simplescreenrecorder
-
-# didn't end up susing this
-# bindsym $mod+n workspace next
-# bindsym $mod+p workspace prev
+bindsym $mod+Tab workspace next
+bindsym $mod+Shift+Tab workspace prev
 
 # class                 border  backgr. text    indicator child_border
 client.focused           #4c7899 #55a095 #ffffff #ddbbbb   #55a095
