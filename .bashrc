@@ -23,19 +23,24 @@ else
     printf "pdm not installed yet\n"
 fi
 
-
-gv () {
-    a=$(grep -iPr "$1")
-    count=$(wc -l <<< $a)
-    if [[ -z $a ]] ; then
-	printf "No results\n"
-    elif [[ $(wc -l <<< $a) -eq 1 ]] ; then
-	vim ${a%:*}
+rgv () {
+    rg_prefix='rg --column --line-number --no-heading --color=always --smart-case'
+    if git status &>/dev/null; then
+        fzf \
+            --ansi  \
+            --disabled  \
+            --cycle \
+            --query "$1" \
+            --bind "start:reload:$rg_prefix {q}"  \
+            --bind "change:reload:$rg_prefix {q} || true"  \
+            --delimiter : \
+            --bind "enter:become(nvim {1} +'normal {2}G{3}|')"  \
+            --height=50%  \
+            --layout=reverse
     else
-    	printf "%s" $a
+        echo "not in a repo"
     fi
     }
-
 
 mesen () {
     i3-msg "workspace 3; append_layout $HOME/.config/i3/layout-mesen.json"
@@ -58,6 +63,10 @@ else
 fi
 
 alias clip='xclip -selection clipboard'
+
+
+alias c2x='xclip -selection clipboard -o | xclip'
+alias x2c='xclip -o | xclip -selection clipboard'
 
 # need to figure out a universal solution to the unreadable 777 files
 #alias ls='ls --color=auto'
