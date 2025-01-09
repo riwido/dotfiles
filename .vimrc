@@ -143,9 +143,10 @@ set signcolumn=yes
 "" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 "" other plugin before putting this into your config
 inoremap <silent><expr> <TAB>
-      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ coc#pum#visible() ? coc#pum#insert() :
       \ CheckBackspace() ? "\<Tab>" :
       \ coc#refresh()
+
 inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
 
@@ -153,7 +154,7 @@ inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 " modified to <C-CR>
 
 "" <C-g>u breaks current undo, please make your own choice
-inoremap <silent><expr> <C-CR> coc#pum#visible() ? coc#pum#confirm()
+inoremap <silent><expr> <C-CR> coc#pum#visible() ? coc#pum#insert()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 function! CheckBackspace() abort
