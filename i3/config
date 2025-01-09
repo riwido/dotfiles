@@ -108,10 +108,10 @@ bindsym $mod+Shift+A focus child
 bindsym $mod+Escape exec --no-startup-id killall i3-nagbar
 
 # transfer clipboard
-bindsym $mod+x exec --no-startup-id xclip -o | xclip -selection clipboard
-bindsym $mod+c exec --no-startup-id xclip -selection clipboard -o | xclip
+bindsym $mod+x exec --no-startup-id (xclip -o | xclip -selection clipboard) && $refresh_i3status
+bindsym $mod+c exec --no-startup-id (xclip -selection clipboard -o | xclip) && $refresh_i3status
 # transfer clipboard
-bindsym $mod+Shift+x exec --no-startup-id echo '' | tee <(xclip) | xclip -selection clipboard
+bindsym $mod+Shift+x exec --no-startup-id (echo '' | tee <(xclip) | xclip -selection clipboard) && $refresh_i3status
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
