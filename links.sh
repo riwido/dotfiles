@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 mkdir -p ~/.config
+mkdir -p ~/.config/gdb
 mkdir -p ~/.vim
 
 ln -sf $PWD/nvim ~/.config/nvim
@@ -16,3 +17,4 @@ ln -sf $PWD/.xinitrc ~/.xinitrc
 ln -sf $PWD/coc-settings.json ~/.vim/coc-settings.json
 ln -sf $PWD/.vimrc ~/.vimrc
 ln -sf $PWD/.gitconfig ~/.gitconfig
+ln -sf $PWD/gdbinit ~/.config/gdb/gdbinit
