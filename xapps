@@ -12,6 +12,7 @@ rust
 tk
 ttf-hack
 xclip
+xdotool
 xfce4-screenshooter
 xorg-server
 xorg-xfd
