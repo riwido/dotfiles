@@ -8,6 +8,7 @@ set laststatus=2
 set mouse=a " mouse & xterm interaction
 set showcmd " show command as its typed
 
+set wildmode=list,longest
 
 " experiment with Tab to switch between buffers
 function SetPreviousBuffer()
