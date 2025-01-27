@@ -239,4 +239,3 @@ exec --no-startup-id $HOME/dotfiles/scripts/monitor-focus-changes.sh
 
 bindsym $mod+n mark swapMark
 bindsym $mod+m swap container with mark swapMark; unmark swapMark
-bindsym $mod+b workspace_layout default
