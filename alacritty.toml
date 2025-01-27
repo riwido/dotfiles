@@ -50,7 +50,14 @@ enabled = []
 [general]
 live_config_reload = true
 
-[[keyboard.bindings]]
-key = "V"
-mods = "Control|Shift"
-action = "PasteSelection"
+
+[mouse]
+bindings = [
+{ mouse = "Middle", action = "None" },
+]
+
+[keyboard]
+bindings = [
+{ key = "V", mods = "Control|Shift", action = "PasteSelection" },
+{ key = "K", mods = "Control|Shift", action = "ClearHistory" },
+]
