@@ -98,7 +98,7 @@ if ! [[ -e .vim/.venv ]]; then
     cd .vim
     virtualenv .venv
     . .venv/bin/activate
-    pip install pynvim
+    pip install pynvim black
     deactivate
     cd ..
 fi
