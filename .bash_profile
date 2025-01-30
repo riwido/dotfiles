@@ -16,6 +16,9 @@ export VISUAL=vim
 
 export PATH="$PATH:$HOME/.local/bin"
 
+export PYTHON_COLORS=0
+export PYTHON_BASIC_REPL=1
+
 # Add .NET Core SDK tools
 export PATH="$PATH:$HOME/.dotnet/tools"
 
