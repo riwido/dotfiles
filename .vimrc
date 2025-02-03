@@ -68,12 +68,6 @@ Plug 'psf/black', { 'branch': 'stable' }
 "Plug 'guns/xterm-color-table.vim'
 call plug#end()
 
-
-:command Z colorscheme zaibatsu
-:command E colorscheme elflord
-:command H colorscheme habamax
-
-
 let g:coc_global_extensions = [
    \'coc-css',
    \'coc-eslint',
@@ -99,31 +93,6 @@ autocmd BufWritePost *.vimrc source ~/.vimrc
 augroup END
 
 :command FF CocCommand prettier.formatFile
-
-function! ColorPicker()
-    let selected = expand("<cword>")
-    let is_color = matchstr(selected, '\v[a-fA-F0-9]{6}')
-    if empty(is_color)
-        echomsg "Not a color"
-        return
-    endif
-    let output = system("zenity --color-selection --color=#" . selected . " 2>/dev/null")
-    let converted = trim(ConvertRgbToHex(output))
-    if len(converted) == 6
-        execute "normal! ciw" . converted
-        stopinsert
-    else
-        echo "No color received"
-    endif
-endfunction
-
-function! ConvertRgbToHex(str)
-    " echomsg "ConvertRbgToHex running against " . a:string
-    let pat = '\vrgb\((\d+),(\d+),(\d+)\)'
-    return substitute(a:str, pat, '\=printf("%02x%02x%02x",(submatch(1)),submatch(2),submatch(3))', 'g')
-endfunction
-
-:command C call ColorPicker()
 
 function! StripWhitespace()
     "if &ft == 'markdown'
@@ -173,22 +142,6 @@ endfunction
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 "
-
-
-" help normal-index to see that normally Ctrl+N is j, Ctrl+P is k
-let g:colors = getcompletion('', 'color')
-func! NextColorscheme()
-    let idx = index(g:colors, g:colors_name)
-    return (idx + 1 >= len(g:colors) ? g:colors[0] : g:colors[idx + 1])
-endfunction
-func! PreviousColorscheme()
-    let idx = index(g:colors, g:colors_name)
-    return (idx - 1 < 0 ? g:colors[-1] : g:colors[idx - 1])
-endfunction
-nnoremap <C-n> :exe "colo " .. NextColorscheme()<CR>
-nnoremap <C-p> :exe "colo " .. PreviousColorscheme()<CR>
-" autocmd! ColorScheme *
-" autocmd ColorScheme * echo g:colors_name
 
 if has('nvim')
     set viminfo+=n$HOME/.vim/nviminfo
