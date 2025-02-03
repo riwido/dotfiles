@@ -40,7 +40,12 @@ function OpenHelpAsOnly()
 endfunction
 autocmd BufEnter * call OpenHelpAsOnly()
 
+function SendMsg(msg)
+    echo a:msg
+endfunction
 
+map <S-Up> :call SendMsg('You pressed Shift Up.  Stop it')<C-CR>
+map <S-Down> :call SendMsg('You pressed Shift Down.  Stop it')<C-CR>
 
 " install https://github.com/junegunn/vim-plug if it isn't there
 if empty(glob('~/.vim/autoload/plug.vim'))
