@@ -153,3 +153,6 @@ autocmd FileType asm setlocal indentkeys=
 
 " disable the incredibly annoying auto comment in a new line
 set formatoptions=
+
+
+let g:loaded_matchparen=1
