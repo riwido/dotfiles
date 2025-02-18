@@ -1,5 +1,8 @@
 [core]
 	editor = nvim
+	autocrlf = true
+	whitespace = cr-at-eol
+
 [color]
     ui = true
 [color "status"]
