@@ -156,3 +156,6 @@ set formatoptions=
 
 
 let g:loaded_matchparen=1
+
+nmap <silent> <C-p> :bprevious<CR>
+nmap <silent> <C-n> :bnext<CR>
