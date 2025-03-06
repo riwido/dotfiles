@@ -30,7 +30,50 @@ defaultPref('browser.toolbars.bookmarks.visibility', 'never');
 defaultPref('full-screen-api.ignore-widgets', true);
 
 // disable sending middle of page search to address bar
-defaultPref('browser.newtabpage.activity-stream.improvesearch.handoffToAwesomebar', false)
+defaultPref('browser.newtabpage.activity-stream.improvesearch.handoffToAwesomebar', false);
+
+// wider scrollbar!
+// https://superuser.com/questions/181502/how-to-make-vertical-scrollbar-wider-on-firefox
+// https://superuser.com/questions/1808379/how-to-prevent-a-website-from-hiding-its-scrollbar
+defaultPref('widget.non-native-theme.scrollbar.size.override', 20);
+defaultPref('widget.non-native-theme.scrollbar.style', 4);
+defaultPref('widget.gtk.overlay-scrollbars.enabled', false);
+
+
+// Some might be duplicates?  the defaults suck...
+defaultPref('browser.fullscreen.autohide', false);
+defaultPref('identity.fxaccounts.enabled', false);
+defaultPref('browser.search.serpEventTelemetryCategorization.regionEnabled', false);
+defaultPref('toolkit.legacyUserProfileCustomizations.stylesheets', true);
+defaultPref('browser.urlbar.suggest.bookmark', false);
+defaultPref('browser.urlbar.quicksuggest.scenario', 'offline');
+defaultPref('browser.search.suggest.enabled', false);
+defaultPref('browser.urlbar.quicksuggest.enabled', false);
+defaultPref('browser.urlbar.shortcuts.history', false);
+defaultPref('browser.urlbar.suggest.history', false);
+defaultPref('places.history.enabled', false);
+defaultPref('privacy.clearOnShutdown.history', true);
+defaultPref('privacy.cpd.history', true);
+defaultPref('privacy.history.custom', true);
+defaultPref('browser.urlbar.recentsearches.featureGate', false);
+defaultPref('browser.urlbar.shortcuts.bookmarks', false);
+defaultPref('browser.urlbar.shortcuts.history', false);
+defaultPref('browser.urlbar.shortcuts.tabs', false);
+defaultPref('browser.urlbar.showSearchSuggestionsFirst', false);
+defaultPref('browser.urlbar.showSearchTerms.enabled', false);
+defaultPref('browser.urlbar.speculativeConnect.enabled', false);
+defaultPref('browser.urlbar.suggest.bookmark', false);
+defaultPref('browser.urlbar.suggest.clipboard', false);
+defaultPref('browser.urlbar.suggest.engines', false);
+defaultPref('browser.urlbar.suggest.fakespot', false);
+defaultPref('browser.urlbar.suggest.history', false);
+defaultPref('browser.urlbar.suggest.mdn', false);
+defaultPref('browser.urlbar.suggest.recentsearches', false);
+defaultPref('browser.urlbar.suggest.searches', false);
+defaultPref('browser.urlbar.suggest.topsites', false);
+defaultPref('browser.urlbar.tipShownCount.searchTip_onboard', 4);
+defaultPref('browser.urlbar.tipShownCount.searchTip_redirect', 4);
+defaultPref('browser.urlbar.trimURLs', false);
 
 // browser.fixup.alternate.enabled <- look into this
 
@@ -1203,6 +1246,12 @@ user_pref("browser.ssl_override_behavior",			1);
 // https://wiki.mozilla.org/Trusted_Recursive_Resolver#ESNI
 // https://en.wikipedia.org/wiki/Server_Name_Indication#Security_implications_(ESNI)
 user_pref("network.security.esni.enabled",			true);
+
+// PREF: Disable the Enterprise Roots preference
+// https://support.mozilla.org/en-US/kb/how-disable-enterprise-roots-preference
+// https://github.com/pyllyukko/user.js/issues/560
+user_pref("security.certerrors.mitm.auto_enable_enterprise_roots",	false);
+user_pref("security.enterprise_roots.enabled",				false);
 
 /******************************************************************************
  * SECTION: Cipher suites                                                     *
