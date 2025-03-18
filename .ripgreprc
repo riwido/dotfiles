@@ -1,0 +1,69 @@
+
+# Copied from https://github.com/BurntSushi/ripgrep/blob/master/FAQ.md#colors
+#
+# ripgrep has two flags related to colors:
+#
+#     --color controls when to use colors.
+#     --colors controls which colors to use.
+#
+# The --color flag accepts one of the following possible values: never, auto,
+# always or ansi. The auto value is the default and will cause ripgrep to only
+# enable colors when it is printing to a terminal. But if you pipe ripgrep to a
+# file or some other process, then it will suppress colors.
+#
+# The --colors flag is a bit more complicated. The general format is:
+#
+# --colors '{type}:{attribute}:{value}'
+#
+#     {type} should be one of path, line, column or match. Each of these
+#     correspond to the four different types of things that ripgrep will add
+#     color to in its output. Select the type whose color you want to change.
+#     {attribute} should be one of fg, bg or style, corresponding to foreground
+#     color, background color, or miscellaneous styling (such as whether to
+#     bold the output or not). {value} is determined by the value of
+#     {attribute}. If {attribute} is style, then {value} should be one of
+#     nobold, bold, nointense, intense, nounderline or underline. If
+#     {attribute} is fg or bg, then {value} should be a color.
+#
+# A color is specified by either one of eight of English names, a single
+# 256-bit number or an RGB triple (with over 16 million possible values, or
+# "true color").
+#
+# The color names are red, blue, green, cyan, magenta, yellow, white or black.
+#
+# A single 256-bit number is a value in the range 0-255 (inclusive). It can
+# either be in decimal format (e.g., 62) or hexadecimal format (e.g., 0x3E).
+#
+# An RGB triple corresponds to three numbers (decimal or hexadecimal) separated
+# by commas.
+#
+# As a special case, --colors '{type}:none' will clear all colors and styles
+# associated with {type}, which lets you start with a clean slate (instead of
+# building on top of ripgrep's default color settings).
+#
+# Here's an example that makes highlights the matches with a nice blue
+# background with bolded white text:
+#
+# $ rg somepattern \
+#     --colors 'match:none' \
+#     --colors 'match:bg:0x33,0x66,0xFF' \
+#     --colors 'match:fg:white' \
+#     --colors 'match:style:bold'
+#
+# Colors are an ideal candidate to set in your configuration file. See the
+# question on emulating The Silver Searcher's output style for an example
+# specific to colors.
+#
+# Use the --colors flag, like so:
+#
+# rg --colors line:fg:yellow      \
+#    --colors line:style:bold     \
+#    --colors path:fg:green       \
+#    --colors path:style:bold     \
+#    --colors match:fg:black      \
+#    --colors match:bg:yellow     \
+#    --colors match:style:nobold  \
+#    foo
+
+--colors=path:fg:cyan
+--colors=match:fg:yellow

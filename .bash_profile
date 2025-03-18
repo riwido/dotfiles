@@ -34,6 +34,8 @@ export ramfs_tmp=/dev/shm/$USER
 export ff_pidfile=${ramfs_tmp}/ffpids
 export active_class=${ramfs_tmp}/active_class
 
+export RIPGREP_CONFIG_PATH=${HOME}/dotfiles/.ripgreprc
+
 cd $HOME/dotfiles
 
 git remote | grep -q public
