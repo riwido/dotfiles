@@ -69,7 +69,7 @@ syn match asm_ca65Op "!"
 syn match asm_ca65Op "\.NOT\>"
 
 " 6502 instruction mnemonics
-syn keyword asm_ca65Mnemonic 
+syn keyword asm_ca65Mnemonic
  \ ADC AND ASL BCC BCS BEQ BIT BMI BNE BPL BRK BVC BVS CLC CLD CLI CLV CMP CPX
  \ CPY DEC DEX DEY EOR INC INX INY JMP JSR LDA LDX LDY LSR NOP ORA PHA PHP PLA
  \ PLP ROL ROR RTI RTS SBC SEC SED SEI STA STX STY TAX TAY TSX TXA TXS TYA
@@ -84,7 +84,7 @@ syn keyword asm_ca65Rockwell
  \ RMB RMB0 RMB1 RMB2 RMB3 RMB4 RMB5 RMB6 RMB7
  \ SMB SMB0 SMB1 SMB2 SMB3 SMB4 SMB5 SMB6 SMB7
 
-syn keyword asm_ca65MacPack 
+syn keyword asm_ca65MacPack
  \ ADD SUB BGE BLT BGT BLE BNZ BZE
  \ JEQ JNE JMI JPL JCS JCC JVS JVC
 
@@ -174,7 +174,7 @@ syn match asm_ca65Struct        "\.proc\s\+[a-z0-9_]*" contains=asm_ca65ProcName
 syn match asm_ca65ProcName      "\s[a-z_][a-z0-9_]*"hs=s+1 contained
 " FIXME: this doesn't seem to catch the end of the struct (folds all the way to
 " EOF)
-"syn region asm_ca65StructFold start="\.struct" end="\.endstruct" fold transparent 
+"syn region asm_ca65StructFold start="\.struct" end="\.endstruct" fold transparent
 "   Pseudo-variables
 syn match asm_ca65PseudoVar "\.cpu\>"
 syn match asm_ca65PseudoVar "\.paramcount\>"
@@ -348,4 +348,3 @@ let b:current_syntax = "asm_ca65"
 
 let &cpo = s:cpo_save
 unlet s:cpo_save
-

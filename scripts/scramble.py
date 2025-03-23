@@ -1,7 +1,7 @@
 import argparse
 import itertools
-import re
 import random
+import re
 import sys
 
 moves = list(itertools.chain.from_iterable((m, f"{m}'", f"{m}2") for m in "BRFLUD"))
