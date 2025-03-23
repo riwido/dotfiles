@@ -1,0 +1,12 @@
+general:
+disable xdg-open (or learn how to use every aspect of it)
+
+firefox:
+pdf viewer
+disable firefox (or os?) error beep when attempting to open pdf with no app available
+
+chrome:
+disable notification/location requests
+disable default browser check
+disable history
+configure all preferences before first launch
