@@ -2,6 +2,7 @@
 
 import argparse
 import pathlib
+import pprint
 import re
 import sys
 
@@ -42,10 +43,13 @@ def sub(string):
     return string
 
 
-def get_info(args):
+def extend(args):
+    by_album_artist = {}
+    number_by_track = {}
+    trackless = []
     if not args.directory:
         print("Requires directory")
-    songs = pathlib.Path(args.directory).rglob("*.[mM][pP]3")
+    songs = pathlib.Path(args.directory).glob("*.[mM][pP]3")
     for song in songs:
         try:
             mp3 = ID3(song)
@@ -53,13 +57,117 @@ def get_info(args):
             albumartist = mp3.get("TPE2")
             album = mp3.get("TALB")
             title = mp3.get("TIT2")
-            print(f"{song}")
-            print(f"{album}")
-            print(f"{albumartist}")
-            print(f"{artist} {title}")
-            print()
+            track = mp3.get("TRCK")
+            if track_number := re.search(r"\d+", str(track)):
+                number_by_track[str(song)] = track_number.group()
+            else:
+                trackless.append(str(song))
+            key = (str(album), str(albumartist))
+            by_album_artist.setdefault(key, []).append(str(song))
         except ID3NoHeaderError:
-            print(f"No tag: {song}\n")
+            print(f"No tag: {song}\n", file=sys.stderr)
+
+    lengths = {aa: len(tracks) for aa, tracks in by_album_artist.items()}
+    winning_length = max(lengths.values())
+    winners = [aa for aa, v in lengths.items() if v == winning_length]
+    if len(winners) > 1:
+        print("Tie between {}. Break tie first".format(", ".join(map(str, winners))))
+        return
+    winner = winners.pop()
+
+    track_numbers = []
+    for track in by_album_artist[winner]:
+        if not number_by_track[track].isdigit():
+            print(f"{track} isn't properly numbered: {track_numbers[track]}")
+            return
+        track_number = int(number_by_track[track])
+        if track_number in track_numbers:
+            print(f"Duplicate track number: {track_number}")
+            return
+        track_numbers.append(track_number)
+
+    track_no = max(track_numbers)
+    new_album, new_artist = winner
+    for song in pathlib.Path(args.directory).glob("*.[mM][pP]3"):
+        if str(song) in by_album_artist[winner]:
+            print(f"This one is good: {song}")
+            continue
+        track_no += 1
+        try:
+            mp3 = ID3(song)
+        except ID3NoHeaderError:
+            print(f"{song} has no tag.  adding one")
+            tags = ID3()
+            tags.save(song)
+            mp3 = ID3(song)
+        if not args.commit:
+            print(f"skipping: {song}")
+            continue
+        print(f"Modifying {song}")
+        mp3["TIT2"] = TIT2(encoding=0, text=[song.stem])
+        mp3["TALB"] = TALB(encoding=0, text=[new_album])
+        mp3["TPE1"] = TPE1(encoding=0, text=[new_artist])
+        mp3["TPE2"] = TPE2(encoding=0, text=[new_artist])
+        mp3["TRCK"] = TRCK(encoding=0, text=[f"{track_no}"])
+        mp3["TPOS"] = TPOS(encoding=0, text=["1/1"])
+        mp3.save()
+
+
+def reset(args):
+    if not args.directory:
+        print("Requires directory")
+        return 1
+    if not args.artist:
+        print("Requires artist")
+        return 1
+    if not args.album:
+        print("Requires album")
+        return 1
+    songs = list(pathlib.Path(args.directory).glob("*.[mM][pP]3"))
+    songs.sort(key=lambda f: str(f).lower())
+    for new_track, song in enumerate(songs, start=1):
+        try:
+            mp3 = ID3(song)
+        except ID3NoHeaderError:
+            print(f"{song} has no tag.  adding one")
+            tags = ID3()
+            tags.save(song)
+            mp3 = ID3(song)
+        # track is the title - come up with cleaner solution later!
+        old_artist = mp3.get("TPE1")
+        old_albumartist = mp3.get("TPE2")
+        old_album = mp3.get("TALB")
+        old_title = mp3.get("TIT2")
+        track = mp3.get("TRCK")
+        if old_track := re.search(r"\d+", str(track)):
+            old_track = old_track.group()
+        else:
+            old_track = "None"
+        new_title = song.stem
+        print(
+            "{}->{} {}->{} {}->{} {}->{} {}->{}".format(
+                old_track,
+                new_track,
+                old_albumartist,
+                args.artist,
+                old_artist,
+                args.artist,
+                old_album,
+                args.album,
+                old_title,
+                new_title,
+            )
+        )
+        if not args.commit:
+            print("skipping save")
+            continue
+        mp3["TIT2"] = TIT2(encoding=0, text=[new_title])
+        mp3["TALB"] = TALB(encoding=0, text=[args.album])
+        mp3["TPE1"] = TPE1(encoding=0, text=[args.artist])
+        mp3["TPE2"] = TPE2(encoding=0, text=[args.artist])
+        mp3["TRCK"] = TRCK(encoding=0, text=[f"{new_track}"])
+        mp3["TPOS"] = TPOS(encoding=0, text=["1/1"])
+        mp3.save()
 
 
 def one_artist(args):
@@ -283,7 +391,7 @@ def renumber(args):
                 m.save()
         else:
             m = ID3(file)
-            m["TRCK"] = TRCK(encoding=0, text=[f"{track}/{total}"])
+            m["TRCK"] = TRCK(encoding=0, text=[f"{track}"])
             m["TPOS"] = TPOS(encoding=0, text=["1/1"])
             m.pop("TCMP", 0)
             if args.commit:
@@ -295,10 +403,11 @@ actions = {
     "one_artist": one_artist,
     "various": fix_various,
     "various4": fix_various_m4a,
-    "get_info": get_info,
+    "extend": extend,
     "one": fix_one_song,
     "apple": rip_apple_bs,
     "num": renumber,
+    "reset": reset,
 }
 
 if __name__ == "__main__":
