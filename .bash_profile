@@ -11,8 +11,8 @@ export bar_intf=_first_
 # Override any defaults with a .localrc
 [[ -f ~/.localrc ]] && . ~/.localrc
 
-export EDITOR=vim
-export VISUAL=vim
+export EDITOR=nvim
+export VISUAL=nvim
 
 export PATH="$PATH:$HOME/.local/bin"
 
